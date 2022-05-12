@@ -39,12 +39,12 @@
                                 <div class="col-3">
                                     <label for="inputCustomer">Jumlah Produk<span class="required">
                                             *</span></label>
-                                    <input type="text" name="jumlah_produk" class="form-control" placeholder="0">
+                                    <input type="text" name="qty" class="form-control" placeholder="0">
                                 </div>
                                 <div class="col-2">
                                     <label for="inputHarga">Harga<span class="required">
                                             *</span></label>
-                                    <input type="text" name="harga" class="form-control" placeholder="0.00">
+                                    <input type="text" name="unit_price" class="form-control" placeholder="0.00">
                                 </div>
                                 <div class="col-2">
                                     <label for="inputDiskon">Diskon<span class="required">

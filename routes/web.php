@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InvoiceController;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +16,15 @@ use App\Http\Controllers\InvoiceController;
 */
 
 Route::get('/', function () {
-    return view('invoices.index');
+    $invoices = DB::table('invoices')->get();
+    return view('invoices.index', [
+        'invoices'=> $invoices
+    ]);
 });
 
 Route::get('/invoices', [InvoiceController::class, 'index']);
 Route::get('/invoices/create', [InvoiceController::class, 'create']);
 Route::post('/invoices/store', [InvoiceController::class, 'store']);
 Route::get('/invoices/{no}/edit', [InvoiceController::class, 'edit']);
+Route::put('/invoices/{no}', [InvoiceController::class, 'update']);
 Route::resource('/invoices', \App\Http\Controllers\InvoiceController::class);

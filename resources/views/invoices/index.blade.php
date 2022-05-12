@@ -21,10 +21,10 @@
                             <tbody>
                               @forelse ($invoices as $i)
                                 <tr>
-                                    <td>{{ $i-> }}</td>
+                                    <td>{{ $loop->index+1 }}</td>
                                     <td>{{ $i->customer }}</td>
                                     <td>{{ date('d-m-Y', strtotime($i->tanggal_invoice)) }}</td>
-                                    <td>{{  date('d-m-Y', strtotime($i->tanggal_jatuh_tempo)) }}</td>
+                                    <td>{{ date('d-m-Y', strtotime($i->tanggal_jatuh_tempo)) }}</td>
                                     <td>{{ $i->deskripsi }}</td>
                                     <td class="text-center">
                                             <a href="{{ route('invoices.edit', $i->no) }}" class="btn btn-sm btn-primary">EDIT</a>

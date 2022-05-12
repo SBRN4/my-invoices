@@ -14,7 +14,8 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $invoices = Invoice::latest()->paginate(5);
+        $invoices = Invoice::query()
+        ->paginate(5);
     
         return view('invoices.index', compact('invoices'));
     }
@@ -44,8 +45,8 @@ class InvoiceController extends Controller
             'tanggal_invoice' => $request->tanggal_invoice,
             'tanggal_jatuh_tempo' => $request->tanggal_jatuh_tempo,
             'item' => $request->item,
-            'jumlah_produk' => $request->jumlah_produk,
-            'harga' => $request->harga,
+            'qty' => $request->qty,
+            'unit_price' => $request->unit_price,
             'diskon' => $request->diskon,
             'pajak' => $request->pajak,
             'status_invoice' => $request->status_invoice,
@@ -60,5 +61,25 @@ class InvoiceController extends Controller
     {
         $invoices = Invoice::find($no);
         return view('invoices.edit', compact(['invoices']));
+    }
+
+    public function update($no, Request $request)
+    {
+        $invoices = Invoice::find($no);
+        $invoices->update([
+            'no' => $request->no,
+            'customer' => $request->customer,
+            'tanggal_invoice' => $request->tanggal_invoice,
+            'tanggal_jatuh_tempo' => $request->tanggal_jatuh_tempo,
+            'item' => $request->item,
+            'qty' => $request->qty,
+            'unit_price' => $request->unit_price,
+            'diskon' => $request->diskon,
+            'pajak' => $request->pajak,
+            'status_invoice' => $request->status_invoice,
+            'status_payment_invoice' => $request->status_payment_invoice,
+            'deskripsi' => $request->deskripsi,
+        ]);
+        return redirect()->route('invoices.index');
     }
 }
