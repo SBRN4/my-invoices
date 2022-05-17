@@ -8,80 +8,59 @@
                     <div class="card-body">
                         <form action="{{ route('invoices.store') }}" method="POST">
                             @csrf
-                            <div class="row">
+                            <h2 style="font-family: fantasy">Create Invoice</h2>
+                            <div class="form-row">
                                 <div class="col-3">
-                                    <label for="inputNumber">No<span class="required"> *</span></label>
+                                    <label for="inputNumber">No</label>
                                     <input type="text" name="no" class="form-control" placeholder="0">
                                 </div>
                                 <div class="col-3">
-                                    <label for="inputCustomer">Customer<span class="required">
-                                            *</span></label>
+                                    <label for="inputCustomer">Customer</label>
                                     <input type="text" name="customer" class="form-control" placeholder="Select Customer">
                                 </div>
                                 <div class="col-3">
-                                    <label for="inputDate">Tanggal Invoice<span class="required">
-                                            *</span></label>
+                                    <label for="inputDate">Tanggal Invoice</label>
                                     <input type="date" name="tanggal_invoice" class="form-control"
                                         placeholder="21 April 2022">
                                 </div>
                                 <div class="col-3">
-                                    <label for="inputDate">Jatuh Tempo<span class="required">
-                                            *</span></label>
+                                    <label for="inputDate">Jatuh Tempo</label>
                                     <input type="date" name="tanggal_jatuh_tempo" class="form-control"
                                         placeholder="21 Mei 2022">
                                 </div>
                             </div> <br>
                             <div class="row">
-                                <div class="col-3">
-                                    <label for="inputDate">Item<span class="required"> *</span></label>
-                                    <input type="text" name="item" class="form-control" placeholder="Masukan nama item">
-                                </div>
-                                <div class="col-3">
-                                    <label for="inputCustomer">Jumlah Produk<span class="required">
-                                            *</span></label>
-                                    <input type="text" name="qty" class="form-control" placeholder="0">
-                                </div>
-                                <div class="col-2">
-                                    <label for="inputHarga">Harga<span class="required">
-                                            *</span></label>
-                                    <input type="text" name="unit_price" class="form-control" placeholder="0.00">
-                                </div>
-                                <div class="col-2">
-                                    <label for="inputDiskon">Diskon<span class="required">
-                                            *</span></label>
+                                <div class="col-4">
+                                    <label for="inputDiskon">Diskon</label>
                                     <input type="text" name="diskon" class="form-control" placeholder="0%">
                                 </div>
-                                <div class="col-2">
-                                    <label for="inputPajak">Pajak<span class="required">
-                                            *</span></label>
+                                <div class="col-4">
+                                    <label for="inputPajak">Pajak</label>
                                     <input type="text" name="pajak" class="form-control" placeholder="0%">
                                 </div>
-                            </div> <br>
-                            <div class="row">
-                                <div class="col-sm-2">
-                                    <select class="form-select" name="status_invoice">
-                                        <option selected>Status Invoice</option>
+                                <div class="col-2">
+                                    <label for="inputStatus">Status Invoice</label>
+                                    <select class="custom-select" name="status_invoice">
+                                        <option selected>Select Invoice</option>
                                         <option value="Publish">Publish</option>
                                         <option value="Draft">Draft</option>
-                                    </select>
+                                      </select>
                                 </div>
-                                <div class="col-sm-">
-                                    <select class="form-select" name="status_payment_invoice">
-                                        <option selected>Status Payment</option>
+                                <div class="col-2">
+                                    <label for="inputPayment">Status Payment</label>
+                                    <select class="custom-select" name="status_payment_invoice">
+                                        <option selected>Select Payment</option>
                                         <option value="Paid">Paid</option>
                                         <option value="Unpaid">Unpaid</option>
                                         <option value="Partial Paid">Partial Paid</option>
-                                    </select>
+                                      </select>
                                 </div>
-                            </div>
-                            <br>
-                    
+                            </div> <br>
                             <div class="mb-6">
                                 <label for="Textarea1" class="form-label">Deskripsi</label>
                                 <textarea class="form-control" name="deskripsi" id="Textarea1" rows="3"></textarea>
                               </div>
                             <br>
-
                             <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
                             <button type="reset" class="btn btn-md btn-warning">RESET</button>
 

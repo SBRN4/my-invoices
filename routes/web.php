@@ -16,15 +16,14 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/', function () {
-    $invoices = DB::table('invoices')->get();
-    return view('invoices.index', [
-        'invoices'=> $invoices
-    ]);
+    return redirect()->route('invoices.index');
 });
 
-Route::get('/invoices', [InvoiceController::class, 'index']);
+
+Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.index');
 Route::get('/invoices/create', [InvoiceController::class, 'create']);
 Route::post('/invoices/store', [InvoiceController::class, 'store']);
-Route::get('/invoices/{no}/edit', [InvoiceController::class, 'edit']);
-Route::put('/invoices/{no}', [InvoiceController::class, 'update']);
+Route::get('/invoices/{id}/edit', [InvoiceController::class, 'edit']);
+Route::put('/invoices/{id}', [InvoiceController::class, 'update']);
+Route::delete('/invoices/{id}', [InvoiceController::class, 'destroy']);
 Route::resource('/invoices', \App\Http\Controllers\InvoiceController::class);
