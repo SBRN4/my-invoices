@@ -19,6 +19,18 @@ Route::get('/', function () {
     return redirect()->route('invoices.index');
 });
 
+Route::get('/rincian', function () {
+   return view('rincian', [
+       "gambar" => "halal.png"
+   ]);
+});
+
+Route::get('/product', function () {
+   return view('invoices.product', [
+   ]);
+});
+
+
 
 Route::get('/invoices', [InvoiceController::class, 'index'])->name('invoices.index');
 Route::get('/invoices/create', [InvoiceController::class, 'create']);

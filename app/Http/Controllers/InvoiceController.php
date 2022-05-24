@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -15,7 +16,8 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        $invoices = Invoice::latest()->paginate(5);
+        $invoices = Invoice::paginate(1);
+        Carbon::setLocale('id');
 
         return view('invoices.index', compact('invoices'));
     }
@@ -38,6 +40,11 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'no' => ['required', 'unique:invoices'],
+            
+        ]);
+
         Invoice::create([
             'no' => $request->no,
             'customer' => $request->customer,

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Invoice extends Model
 {
@@ -28,5 +29,9 @@ class Invoice extends Model
         'deskripsi',
     ];
 
-    
+    public function getCreatedAtAttributte()
+    {
+        return Carbon::parse($this->attributes['created_at'])
+            ->translatedFormat('l, d F Y');
+    }
 }
